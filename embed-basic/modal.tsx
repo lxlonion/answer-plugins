@@ -21,13 +21,25 @@ import { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-const EmbedModal = ({ show, setShowState, onConfirm }) => {
-  const [title, setTitle] = useState({
+interface FormField {
+  value: string;
+  isInvalid: boolean;
+  errorMsg: string;
+}
+
+interface EmbedModalProps {
+  show: boolean;
+  setShowState: (show: boolean) => void;
+  onConfirm: (data: { title: string; url: string }) => void;
+}
+
+const EmbedModal = ({ show, setShowState, onConfirm }: EmbedModalProps) => {
+  const [title, setTitle] = useState<FormField>({
     value: '',
     isInvalid: false,
     errorMsg: '',
   });
-  const [url, setUrl] = useState({
+  const [url, setUrl] = useState<FormField>({
     value: '',
     isInvalid: false,
     errorMsg: '',
@@ -40,7 +52,7 @@ const EmbedModal = ({ show, setShowState, onConfirm }) => {
     setShowState(false);
   };
 
-  const handleChangeTitle = (e) => {
+  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle({
       value: e.target.value,
       isInvalid: false,
@@ -48,7 +60,7 @@ const EmbedModal = ({ show, setShowState, onConfirm }) => {
     });
   };
 
-  const handleChangeUrl = (e) => {
+  const handleChangeUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrl({
       value: e.target.value,
       isInvalid: false,

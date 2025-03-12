@@ -37,6 +37,12 @@ interface Config {
   enable: boolean;
 }
 
+interface EmbedDefinition {
+  name: string;
+  regexs: RegExp[];
+  embed: (id: string, url?: string, title?: string) => ReactElement;
+}
+
 const get = async (url: string) => {
   const response = await fetch(url);
   const { data } = await response.json();
@@ -44,14 +50,14 @@ const get = async (url: string) => {
 };
 
 const useRenderEmbed = (
-  element,
+  element: HTMLElement | { current: HTMLElement } | null,
   request: Request = {
     get,
   },
 ) => {
   const [configs, setConfigs] = useState<Config[] | null>(null);
 
-  const embeds = [
+  const embeds: EmbedDefinition[] = [
     {
       name: 'YouTube',
       regexs: [
@@ -73,7 +79,7 @@ const useRenderEmbed = (
         // 添加一个特殊的URL模式来触发用户信息嵌入
         /userinfo:\/\/current/,
       ],
-      embed: (_, url, title = '') => {
+      embed: (_, url = '', title = '') => {
         // 现在这个组件已经被修改为显示用户信息
         return <TwitterEmbed url={url} title={title} />;
       },
@@ -178,7 +184,7 @@ const useRenderEmbed = (
     return html;
   };
 
-  const render = (targetElement) => {
+  const render = (targetElement: HTMLElement) => {
     if (!element) {
       return;
     }
