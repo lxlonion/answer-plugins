@@ -63,41 +63,22 @@ const useRenderEmbed = (
         return <YouTubeEmbed videoId={videoId} />;
       },
     },
+
+    //*********************************************************** */
     {
       name: 'Twitter',
       regexs: [
         /https:\/\/twitter\.com\/[a-zA-Z0-9_]+\/status\/([a-zA-Z0-9_]+)/,
         /https:\/\/x\.com\/[a-zA-Z0-9_]+\/status\/([a-zA-Z0-9_]+)/,
+        // 添加一个特殊的URL模式来触发用户信息嵌入
+        /userinfo:\/\/current/,
       ],
       embed: (_, url, title = '') => {
-        const blockquoteElement = document.createElement('blockquote');
-        blockquoteElement.classList.add('twitter-tweet');
-
-        const anchorElement = document.createElement('a');
-        anchorElement.href = url.replace('x.com', 'twitter.com');
-
-        anchorElement.textContent = title;
-        blockquoteElement.appendChild(anchorElement);
-        const scriptElement = document.createElement('script');
-        scriptElement.src = 'https://platform.twitter.com/widgets.js';
-        scriptElement.async = true;
-
-        const styleElement = document.createElement('style');
-        styleElement.innerHTML = `
-          .twitter-tweet {
-            display: block;
-            margin: 0 auto;
-          }
-        `;
-
-        return (
-          <TwitterEmbed
-            url={url.replace('x.com', 'twitter.com')}
-            title={title}
-          />
-        );
+        // 现在这个组件已经被修改为显示用户信息
+        return <TwitterEmbed url={url} title={title} />;
       },
     },
+    //*********************************************************** */
     {
       name: 'CodePen',
       regexs: [

@@ -75,32 +75,47 @@ const EmbedModal = ({ show, setShowState, onConfirm }) => {
     }
     const urlRegex =
       /^[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
-    if (!urlRegex.test(url.value)) {
+    // 特殊处理用户信息URL
+    if (url.value === 'userinfo://current' || urlRegex.test(url.value)) {
+      onConfirm({
+        title: title.value,
+        url: url.value,
+      });
+      setShowState(false);
+
+      setTitle({
+        value: '',
+        isInvalid: false,
+        errorMsg: '',
+      });
+
+      setUrl({
+        value: '',
+        isInvalid: false,
+        errorMsg: '',
+      });
+    } else {
       setUrl({
         ...url,
         isInvalid: true,
         errorMsg: t('invalid_url'),
       });
-      return;
     }
-    onConfirm({
-      title: title.value,
-      url: url.value,
-    });
-    setShowState(false);
+  };
 
+  const insertUserInfo = () => {
     setTitle({
-      value: '',
+      value: '当前用户信息',
       isInvalid: false,
       errorMsg: '',
     });
-
     setUrl({
-      value: '',
+      value: 'userinfo://current',
       isInvalid: false,
       errorMsg: '',
     });
   };
+
   return (
     <Modal show={show} onHide={handleHide}>
       <Modal.Header closeButton>
@@ -132,6 +147,9 @@ const EmbedModal = ({ show, setShowState, onConfirm }) => {
               {url.errorMsg}
             </Form.Control.Feedback>
           </Form.Group>
+          <Button variant="outline-secondary" onClick={insertUserInfo} className="mt-2">
+            插入用户信息
+          </Button>
         </Form>
       </Modal.Body>
       <Modal.Footer>
