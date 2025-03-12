@@ -27,7 +27,12 @@ interface UserInfo {
   avatar: string;
 }
 
-const TwitterEmbed = () => {
+interface TwitterEmbedProps {
+  url?: string;
+  title?: string;
+}
+
+const TwitterEmbed = (_props: TwitterEmbedProps) => {
   const loadingRef = useRef<HTMLDivElement>(null);
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [error, setError] = useState<string | null>(null);
