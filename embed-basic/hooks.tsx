@@ -111,7 +111,7 @@ const useRenderEmbed = (
         /https:\/\/gist\.github\.com\/[a-zA-Z0-9_]+\/([a-zA-Z0-9_]+)/,
         /https:\/\/gist\.github\.com\/[a-zA-Z0-9_]+\/([a-zA-Z0-9_]+)\.js/,
       ],
-      embed: (_, url) => {
+      embed: (_, url = '') => {
         const scriptUrl = url.indexOf('.js') > -1 ? url : `${url}.js`;
         return <GithubGistEmbed scriptUrl={scriptUrl} />;
       },
