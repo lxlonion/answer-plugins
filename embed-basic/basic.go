@@ -22,10 +22,13 @@ package embed_basic
 import (
 	"embed"
 	"encoding/json"
-	"github.com/apache/answer-plugins/util"
+
+	"github.com/lxlonion/answer-plugins/util"
+
 	"github.com/gin-gonic/gin"
 
-	"github.com/apache/answer-plugins/embed-basic/i18n"
+	"github.com/lxlonion/answer-plugins/embed-basic/i18n"
+
 	"github.com/apache/answer/plugin"
 )
 
