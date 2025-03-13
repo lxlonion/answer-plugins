@@ -22,9 +22,10 @@ import Spinner from 'react-bootstrap/Spinner';
 
 declare global {
   interface Window {
-    twttr: any;
+    userInfoWidget: any;
   }
 }
+//recive url and title
 const TwitterEmbed = ({ url, title = '' }) => {
   const loadingRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -32,15 +33,16 @@ const TwitterEmbed = ({ url, title = '' }) => {
       return;
     }
     const script = document.createElement('script');
-    script.src = 'https://platform.twitter.com/widgets.js';
+    // 修改为加载我们自定义的JS文件
+    script.src = './userInfoWidget.js';
     script.async = true;
     loadingRef.current.before(script);
-
+    
     script.onload = () => {
-      if (!window?.twttr) {
+      if (!window?.userInfoWidget) {
         return;
       }
-      window.twttr.events.bind('rendered', () => {
+      window.userInfoWidget.events.bind('rendered', () => {
         if (loadingRef.current) {
           const parentElement = loadingRef.current.parentElement;
           if (parentElement) {
