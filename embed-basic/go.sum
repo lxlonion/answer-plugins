@@ -4,8 +4,6 @@ github.com/LinkinStars/go-i18n/v2 v2.2.2 h1:ZfjpzbW13dv6btv3RALKZkpN9A+7K1JA//2Q
 github.com/LinkinStars/go-i18n/v2 v2.2.2/go.mod h1:hLglSJ4/3M0Y7ZVcoEJI+OwqkglHCA32DdjuJJR2LbM=
 github.com/apache/answer v1.4.2-RC1.0.20250107023923-061894735091 h1:TmUPU0tX3VzbUO7rCBW3hJDUGO/WOI343zcbymIWQSM=
 github.com/apache/answer v1.4.2-RC1.0.20250107023923-061894735091/go.mod h1:ehAJmrP4X9kBJKlYzTtRrwRbKeRqjnHxyYlhf11yzfw=
-github.com/apache/answer-plugins/util v1.0.3-0.20250107030257-cf94ebc70954 h1:jVqxzyeHvYxAT30vGfHXtZLNoi9qAWnvTtuMSj6pFys=
-github.com/apache/answer-plugins/util v1.0.3-0.20250107030257-cf94ebc70954/go.mod h1:wQEKNXVa/BKKq5yro9qo5bFiO3/SW1noORabxEndk3o=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/bytedance/sonic v1.12.2 h1:oaMFuRTpMHYLpCntGca65YWt5ny+wAceDERTkT2L9lg=

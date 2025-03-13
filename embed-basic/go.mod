@@ -1,12 +1,15 @@
-module github.com/apache/answer-plugins/embed-basic
+module github.com/lxlonion/answer-plugins/embed-basic
 
 go 1.22.0
 
 require (
 	github.com/apache/answer v1.4.2-RC1.0.20250107023923-061894735091
-	github.com/apache/answer-plugins/util v1.0.3-0.20250107030257-cf94ebc70954
 	github.com/gin-gonic/gin v1.10.0
+	github.com/lxlonion/answer-plugins/util v1.0.2
 )
+
+// replace apache/answer/answer-plugins/util v1.0.3-0.20250107030257-cf94ebc70954 => github.com/lxlonion/answer-plugins v1.0.1
+replace github.com/lxlonion/answer-plugins/util v1.0.2 => /Volumes/pc801/lian/ans/luanch/answer-plugins/util
 
 require (
 	github.com/LinkinStars/go-i18n/v2 v2.2.2 // indirect
